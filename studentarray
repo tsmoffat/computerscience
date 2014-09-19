@@ -1,0 +1,98 @@
+package StudentArray;
+
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+
+public class studentarray {
+
+	public static void main(String[] args) {
+		String[] StudentNames;
+		StudentNames = new String[20];
+
+		int count = 20;
+		for (int i = 0; i < count; i++) {
+			StudentNames[i] = JOptionPane
+					.showInputDialog("Enter your student's names:");
+			
+			// System.out.println(Arrays.toString(StudentNames));
+		}
+		JOptionPane.showMessageDialog(null, "Now enter the percentages");
+		int[][] StudentScores = new int[20][5];
+		int j = 0;
+		for (int k = 0; k < 5; k++) {
+			for (; j < count; j++) {
+				String sScoreRaw = JOptionPane
+						.showInputDialog("Enter your student's percentages");
+				StudentScores[j][k] = Integer.valueOf(sScoreRaw);
+				
+				// System.out.println(Arrays.deepToString(StudentScores));
+			}
+			if (j == count) {
+				int response = JOptionPane
+						.showConfirmDialog(null,
+								"Do you want to continue entering results?",
+								"Confirm", JOptionPane.YES_NO_OPTION,
+								JOptionPane.QUESTION_MESSAGE);
+				if (response == JOptionPane.YES_OPTION) {
+					j = 0;
+					
+				} else if (response == JOptionPane.NO_OPTION) {
+					break;
+				}
+			}
+
+		}
+		String[][] StudentGrades = new String[20][5];
+		for (int l = 0; l < 5; l++) {
+			for (int m = 0; m < count; m++) {
+				int sScore = StudentScores[m][l];
+			    if (sScore <= 40)
+					StudentGrades[m][l] = "U";
+				else if (sScore <= 50)
+					StudentGrades[m][l] = "E";
+				else if (sScore <= 60)
+					StudentGrades[m][l] = "D";
+				else if (sScore <= 70)
+					StudentGrades[m][l] = "C";
+				else if (sScore <= 80)
+					StudentGrades[m][l] = "B";
+				else if (sScore <= 90)
+					StudentGrades[m][l] = "A";
+				else if (sScore <= 100)
+					StudentGrades[m][l] = "A*";
+				else
+					JOptionPane.showMessageDialog(null,
+							"Error ID: 10T, Percentage too high", "Error",
+							JOptionPane.ERROR);
+
+			}
+			if (l == 4){
+				break;
+			}
+		}
+		
+		System.out.println("ey");
+		for (int n = 0; n < 20; n++) {
+			System.out.print(StudentNames[n]);
+			System.out.print("\t");
+			System.out.print("\t");
+			System.out.print(StudentScores[n][0]);
+			System.out.print("\t");
+			System.out.print(StudentGrades[n][0]);
+			System.out.print("\t");
+			System.out.print(StudentScores[n][1]);
+			System.out.print("\t");
+			System.out.print(StudentGrades[n][1]);
+			System.out.print("\t");
+			System.out.print(StudentScores[n][2]);
+			System.out.print("\t");
+			System.out.print(StudentGrades[n][2]);
+			System.out.print("\t");
+			System.out.print(StudentScores[n][3]);
+			System.out.print("\t");
+			System.out.print(StudentGrades[n][3]);
+			System.out.print("\n");
+		}
+		
+	}
+}
